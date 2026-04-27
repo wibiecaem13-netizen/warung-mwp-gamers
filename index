@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Warung MWP Gamers</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="scroll-progress" aria-hidden="true">
+    <span class="scroll-progress-bar" id="scrollProgress"></span>
+  </div>
+  <div class="music-widget" id="musicWidget">
+    <div class="music-widget-copy">
+      <span class="music-label">Now Playing</span>
+      <strong>MWP Theme</strong>
+      <div class="music-meta">
+        <span class="music-state" id="musicState">Standby</span>
+        <span class="music-time" id="musicTime">00:00 / 00:00</span>
+      </div>
+      <button class="music-progress" id="musicProgress" type="button" aria-label="Lompat posisi lagu">
+        <span class="music-progress-bar" id="musicProgressBar"></span>
+      </button>
+      <label class="music-volume-wrap" for="musicVolume">
+        <span>Volume</span>
+        <input
+          class="music-volume"
+          id="musicVolume"
+          type="range"
+          min="0"
+          max="100"
+          value="85"
+          aria-label="Atur volume musik"
+        >
+      </label>
+    </div>
+    <button class="music-toggle" id="musicToggle" type="button">Nyalain Musik</button>
+  </div>
+  <audio id="bgMusic" loop preload="auto" playsinline>
+    <source src="assets/mwp-theme.mp3" type="audio/mpeg">
+  </audio>
+  <div class="wallpaper-rotator" id="wallpaperRotator" aria-hidden="true">
+    <div class="wallpaper-slide is-active"></div>
+    <div class="wallpaper-slide"></div>
+    <div class="wallpaper-overlay"></div>
+  </div>
+  <div class="page-shell">
+    <header class="hero">
+      <div class="hero-backdrop" aria-hidden="true">
+        <span class="hero-orb hero-orb-a"></span>
+        <span class="hero-orb hero-orb-b"></span>
+        <span class="hero-orb hero-orb-c"></span>
+        <span class="hero-speedlines hero-speedlines-main"></span>
+        <span class="hero-speedlines hero-speedlines-alt"></span>
+        <span class="hero-particle hero-particle-1"></span>
+        <span class="hero-particle hero-particle-2"></span>
+        <span class="hero-particle hero-particle-3"></span>
+        <span class="hero-particle hero-particle-4"></span>
+        <span class="hero-particle hero-particle-5"></span>
+        <span class="hero-particle hero-particle-6"></span>
+        <span class="hero-petal hero-petal-1"></span>
+        <span class="hero-petal hero-petal-2"></span>
+        <span class="hero-petal hero-petal-3"></span>
+        <span class="hero-petal hero-petal-4"></span>
+        <span class="hero-petal hero-petal-5"></span>
+        <span class="hero-sparkle hero-sparkle-1"></span>
+        <span class="hero-sparkle hero-sparkle-2"></span>
+        <span class="hero-sparkle hero-sparkle-3"></span>
+        <span class="hero-comet hero-comet-1"></span>
+        <span class="hero-comet hero-comet-2"></span>
+        <span class="hero-comet hero-comet-3"></span>
+        <span class="hero-energy-ring hero-energy-ring-1"></span>
+        <span class="hero-energy-ring hero-energy-ring-2"></span>
+        <span class="hero-neon-dot hero-neon-dot-1"></span>
+        <span class="hero-neon-dot hero-neon-dot-2"></span>
+        <span class="hero-neon-dot hero-neon-dot-3"></span>
+        <span class="hero-neon-dot hero-neon-dot-4"></span>
+        <span class="hero-magic-slash hero-magic-slash-1"></span>
+        <span class="hero-magic-slash hero-magic-slash-2"></span>
+        <span class="hero-magic-card hero-magic-card-1">
+          <span>SSR</span>
+          <strong>FOOD BUFF</strong>
+        </span>
+        <span class="hero-magic-card hero-magic-card-2">
+          <span>XP</span>
+          <strong>RANK UP</strong>
+        </span>
+        <span class="hero-gridlines"></span>
+        <span class="hero-scanline"></span>
+      </div>
+      <nav class="topbar">
+        <div class="brand">
+          <img class="brand-logo" src="assets/logo-mwp.svg" alt="Logo MWP Gamers">
+          <div>
+            <p class="eyebrow">Warung Makan Player</p>
+            <h1>Warung MWP Gamers</h1>
+          </div>
+        </div>
+        <div class="topbar-actions">
+          <a class="cta-link" href="#menu">Lihat Menu</a>
+        </div>
+      </nav>
+
+      <section class="breaking-news-panel" aria-label="Berita game terbaru" data-news-carousel>
+        <div class="breaking-news-head">
+          <p class="card-label">Berita Game</p>
+          <span>Update panas</span>
+        </div>
+        <div class="breaking-news-list">
+          <a class="breaking-news-item news-epep is-active" href="https://ff.garena.com/en/article/1649/" target="_blank" rel="noreferrer">
+            <img class="breaking-news-image" src="https://dl.dir.freefiremobile.com/common/web_event/official2.ff.garena.all/20264/e9d86cb6372eb1a24a0a73e248a417b3.jpeg" alt="Free Fire Battle in Undersea Style" loading="lazy">
+            <span class="news-badge">Free Fire</span>
+            <strong>Undersea Mystery hadir dengan gameplay laut, Ray, dan reward baru.</strong>
+            <small>8 Apr 2026</small>
+          </a>
+          <a class="breaking-news-item news-genshin" href="https://www.gmanetwork.com/news/lifestyle/hobbiesandactivities/985290/genshin-impact-unveils-first-look-at-long-awaited-snezhnaya-here-s-what-to-expect/story/" target="_blank" rel="noreferrer">
+            <video class="breaking-news-image" autoplay muted loop playsinline preload="metadata" aria-label="Video Genshin Impact To Snezhnaya and the Future">
+              <source src="assets/genshin-snezhnaya.mp4" type="video/mp4">
+            </video>
+            <span class="news-badge">Genshin</span>
+            <strong>Snezhnaya akhirnya diperlihatkan lewat program “To Snezhnaya and the Future”.</strong>
+            <small>25 Apr 2026</small>
+          </a>
+          <a class="breaking-news-item news-wuwa" href="https://www.notebookcheck.net/Wuthering-Waves-Version-3-3-lands-on-April-30.1277132.0.html" target="_blank" rel="noreferrer">
+            <img class="breaking-news-image" src="https://blog.playstation.com/tachyon/2028/04/6e43881b42c434cb2de132ac46838e5c4f262bb2-scaled.jpg?crop_strategy=smart&resize=1088%2C612" alt="Wuthering Waves Reverbs From the End of Galaxies" loading="lazy">
+            <span class="news-badge">WuWa</span>
+            <strong>Version 3.3 “Reverbs From the End of Galaxies” meluncur 30 April.</strong>
+            <small>30 Apr 2026</small>
+          </a>
+        </div>
+        <div class="breaking-news-controls" aria-label="Kontrol berita">
+          <button class="news-nav-btn" type="button" data-news-prev aria-label="Berita sebelumnya">‹</button>
+          <div class="news-dots" aria-label="Pilih berita">
+            <button class="news-dot is-active" type="button" data-news-dot="0" aria-label="Berita Free Fire"></button>
+            <button class="news-dot" type="button" data-news-dot="1" aria-label="Berita Genshin Impact"></button>
+            <button class="news-dot" type="button" data-news-dot="2" aria-label="Berita Wuthering Waves"></button>
+          </div>
+          <button class="news-nav-btn" type="button" data-news-next aria-label="Berita berikutnya">›</button>
+        </div>
+      </section>
+
+      <aside class="hero-right-fill" aria-label="Promo menu visual">
+        <article class="side-menu-card side-menu-card-main">
+          <div>
+            <p class="card-label">Hot Drop</p>
+            <h3>Paket Mabar Kenyang</h3>
+            <span>Nasi ayam, es soda, sambal meteor</span>
+          </div>
+          <strong>Rp30K</strong>
+        </article>
+        <article class="side-food-visual" aria-label="Ilustrasi menu rice bowl">
+          <span class="side-food-steam side-food-steam-1"></span>
+          <span class="side-food-steam side-food-steam-2"></span>
+          <span class="side-food-plate">
+            <span class="side-food-bowl">
+              <span class="side-food-rice"></span>
+              <span class="side-food-chicken"></span>
+              <span class="side-food-sauce"></span>
+              <span class="side-food-veggie"></span>
+            </span>
+          </span>
+          <div>
+            <p class="card-label">Visual Menu</p>
+            <h3>Rice Bowl Patriot</h3>
+            <p class="side-food-copy">
+              Porsi tank buat push rank: nasi hangat, lauk tebal, saus gurih, dan sambal yang bikin fokus balik.
+            </p>
+            <ul class="side-food-points">
+              <li>Beef blackpepper creamy</li>
+              <li>Nasi pulen plus sayur warna</li>
+              <li>Cocok buat sesi mabar panjang</li>
+            </ul>
+          </div>
+        </article>
+        <div class="side-mini-grid" aria-hidden="true">
+          <span>Ayam Critical</span>
+          <span>Mie Boost</span>
+          <span>Es Headshot</span>
+          <span>Sambal Buff</span>
+        </div>
+      </aside>
+
+      <div class="hero-grid">
+        <section class="hero-copy">
+          <p class="tag">Basecamp lapar para grinders</p>
+          <h2>Mabar makin fokus kalau perut nggak low battery.</h2>
+          <div class="food-slider" data-food-slider aria-label="Slide menu makanan favorit">
+            <article class="food-slide food-slide-ayam is-active">
+              <div class="food-plate" aria-hidden="true">
+                <span class="food-steam food-steam-1"></span>
+                <span class="food-steam food-steam-2"></span>
+                <span class="food-bowl">
+                  <span class="food-rice"></span>
+                  <span class="food-main"></span>
+                  <span class="food-garnish"></span>
+                </span>
+              </div>
+              <div class="food-slide-copy">
+                <span>Core Pick</span>
+                <strong>Nasi Ayam Critical</strong>
+                <small>Ayam crispy, saus pedas manis, nasi pulen.</small>
+              </div>
+              <b>Rp18K</b>
+            </article>
+            <article class="food-slide food-slide-mie">
+              <div class="food-plate" aria-hidden="true">
+                <span class="food-steam food-steam-1"></span>
+                <span class="food-steam food-steam-2"></span>
+                <span class="food-bowl">
+                  <span class="food-rice"></span>
+                  <span class="food-main"></span>
+                  <span class="food-garnish"></span>
+                </span>
+              </div>
+              <div class="food-slide-copy">
+                <span>Support Buff</span>
+                <strong>Mie Boost XP</strong>
+                <small>Mie smoky, sosis, bakso, chili oil.</small>
+              </div>
+              <b>Rp16K</b>
+            </article>
+            <article class="food-slide food-slide-bowl">
+              <div class="food-plate" aria-hidden="true">
+                <span class="food-steam food-steam-1"></span>
+                <span class="food-steam food-steam-2"></span>
+                <span class="food-bowl">
+                  <span class="food-rice"></span>
+                  <span class="food-main"></span>
+                  <span class="food-garnish"></span>
+                </span>
+              </div>
+              <div class="food-slide-copy">
+                <span>Tank Meal</span>
+                <strong>Rice Bowl Patriot</strong>
+                <small>Beef blackpepper, jagung, saus creamy.</small>
+              </div>
+              <b>Rp22K</b>
+            </article>
+            <article class="food-slide food-slide-soda">
+              <div class="food-plate" aria-hidden="true">
+                <span class="food-steam food-steam-1"></span>
+                <span class="food-steam food-steam-2"></span>
+                <span class="food-bowl">
+                  <span class="food-rice"></span>
+                  <span class="food-main"></span>
+                  <span class="food-garnish"></span>
+                </span>
+              </div>
+              <div class="food-slide-copy">
+                <span>Sniper Drink</span>
+                <strong>Es Soda Headshot</strong>
+                <small>Soda dingin warna merah, putih, biru.</small>
+              </div>
+              <b>Rp12K</b>
+            </article>
+            <div class="food-slider-dots" aria-hidden="true">
+              <span class="is-active"></span>
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+          </div>
+          <p class="lead">
+            Menu rumahan pedas gurih, minuman dingin, dan spot nongkrong dengan aura esports
+            gelap, bold, dan kontras ala identitas MWP Gamers.
+          </p>
+          <div class="anime-sticker-row" aria-label="Stiker anime elemental">
+            <span class="anime-sticker sticker-pyro" aria-hidden="true">
+              <span class="sticker-decal">
+                <span class="sticker-symbol">PYRO</span>
+                <span class="sticker-shine"></span>
+              </span>
+            </span>
+            <span class="anime-sticker sticker-hydro" aria-hidden="true">
+              <span class="sticker-decal">
+                <span class="sticker-symbol">AQUA</span>
+                <span class="sticker-shine"></span>
+              </span>
+            </span>
+            <span class="anime-sticker sticker-electro" aria-hidden="true">
+              <span class="sticker-decal">
+                <span class="sticker-symbol">VOLT</span>
+                <span class="sticker-shine"></span>
+              </span>
+            </span>
+          </div>
+          <div class="anime-sticker-stage" aria-label="Koleksi stiker anime MWP">
+            <article class="chibi-sticker chibi-sticker-cook">
+              <span class="chibi-badge">Cook</span>
+              <span class="chibi-head">
+                <span class="chibi-hair"></span>
+                <span class="chibi-face">
+                  <span class="chibi-eye chibi-eye-left"></span>
+                  <span class="chibi-eye chibi-eye-right"></span>
+                  <span class="chibi-mouth"></span>
+                </span>
+              </span>
+              <strong>Chef Buff</strong>
+            </article>
+            <article class="chibi-sticker chibi-sticker-gamer">
+              <span class="chibi-badge">Carry</span>
+              <span class="chibi-head">
+                <span class="chibi-hair"></span>
+                <span class="chibi-face">
+                  <span class="chibi-eye chibi-eye-left"></span>
+                  <span class="chibi-eye chibi-eye-right"></span>
+                  <span class="chibi-mouth"></span>
+                </span>
+              </span>
+              <strong>Rank Mode</strong>
+            </article>
+            <article class="chibi-sticker chibi-sticker-tech">
+              <span class="chibi-badge">Tech</span>
+              <span class="chibi-head">
+                <span class="chibi-hair"></span>
+                <span class="chibi-face">
+                  <span class="chibi-eye chibi-eye-left"></span>
+                  <span class="chibi-eye chibi-eye-right"></span>
+                  <span class="chibi-mouth"></span>
+                </span>
+              </span>
+              <strong>Code XP</strong>
+            </article>
+          </div>
+          <div class="hero-actions">
+            <a
+              class="primary-btn"
+              id="heroWhatsAppBtn"
+              href="https://wa.me/6281328440958?text=Halo%20Warung%20Bu%20Asih%2C%20saya%20mau%20pesan."
+              target="_blank"
+              rel="noreferrer"
+            >
+              Pesan Sekarang
+            </a>
+            <button class="secondary-btn" id="dailySpecialBtn" type="button">Spin Menu Hari Ini</button>
+          </div>
+          <div class="stats">
+            <article>
+              <strong class="stat-value" data-count-to="25" data-count-suffix="+">25+</strong>
+              <span>Menu war ready</span>
+            </article>
+            <article>
+              <strong class="stat-value" data-count-to="12" data-count-suffix=" jam">12 jam</strong>
+              <span>Open tiap hari</span>
+            </article>
+            <article>
+              <strong>Fast</strong>
+              <span>Serve anti AFK</span>
+            </article>
+          </div>
+          <div class="live-strip" aria-label="Status basecamp">
+            <div class="live-strip-track">
+              <span>BUFF AKTIF: Sambal meteor ready</span>
+              <span>QUEUE NORMAL: Order masuk anti ribet</span>
+              <span>BASECAMP: Tempat santai buat ngoding dan push rank</span>
+              <span>DROP HARI INI: Paket Sultan Ranked lagi panas</span>
+              <span>BUFF AKTIF: Sambal meteor ready</span>
+              <span>QUEUE NORMAL: Order masuk anti ribet</span>
+              <span>BASECAMP: Tempat santai buat ngoding dan push rank</span>
+              <span>DROP HARI INI: Paket Sultan Ranked lagi panas</span>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </header>
+
+    <main>
+      <section class="section" id="menu">
+        <div class="section-heading">
+          <p class="section-tag">Loadout Menu</p>
+          <h2>Pick makanan sesuai role kamu</h2>
+        </div>
+        <div class="menu-grid" id="menuGrid"></div>
+      </section>
+
+      <section class="section spotlight">
+        <div class="spotlight-copy">
+          <p class="section-tag">Gamer Zone</p>
+          <h2>Tempat makan yang kerasa kayak lobby menang</h2>
+          <p>
+            Cocok buat push rank, ngoding, atau nongkrong tim. Musik santai, tempat terang,
+            dan plating makanan dibuat biar kelihatan standout di feed.
+          </p>
+        </div>
+        <div class="feature-list">
+          <article>
+            <strong>01</strong>
+            <span>cocok buat yang laper sama haus </span>
+          </article>
+          <article>
+            <strong>02</strong>
+            <span>Porsi banyak dan ngeyangin</span>
+          </article>
+          <article>
+            <strong>03</strong>
+            <span>Tempat nyaman di layanin langsung sama ketua guild </span>
+          </article>
+        </div>
+      </section>
+
+      <section class="section location-section" id="location">
+        <div class="section-heading">
+          <p class="section-tag">Lokasi Warung</p>
+          <h2>Basecamp Warung Bu Asih</h2>
+        </div>
+        <div class="location-grid">
+          <article class="location-card location-map-card">
+            <div class="location-map-head">
+              <div>
+                <p class="card-label">Map Lokasi</p>
+                <h3>Warung Bu Asih</h3>
+              </div>
+              <span class="location-badge">Kedungampel</span>
+            </div>
+            <div class="location-map-shell">
+              <span class="location-map-pin">Warung Bu Asih</span>
+              <iframe
+                class="location-map-frame"
+                title="Map Warung Bu Asih"
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                src="https://www.google.com/maps?q=Kedungampel%2C%20Wonokriyo%2C%20Kec.%20Gombong%2C%20Kabupaten%20Kebumen%2C%20Jawa%20Tengah%2054412&z=18&output=embed"
+              ></iframe>
+            </div>
+            <p class="form-note">
+              Titik map diarahkan ke area Kedungampel, Wonokriyo, Gombong. Nama “Warung Bu Asih” ditampilin di halaman ini.
+            </p>
+          </article>
+
+          <div class="location-stack">
+            <article class="location-card">
+              <p class="card-label">Alamat</p>
+              <h3>Warung siap didatengin langsung</h3>
+              <p class="location-address">
+                Warung Bu Asih, Kedungampel, Wonokriyo, Kec. Gombong, Kabupaten Kebumen,
+                Jawa Tengah 54412.
+              </p>
+              <div class="location-meta">
+                <span>Buka tiap hari</span>
+                <strong>10.00 - 22.00 WIB</strong>
+              </div>
+              <a
+                class="primary-btn"
+                href="https://www.google.com/maps/search/?api=1&query=Warung+Bu+Asih+Kedungampel+Wonokriyo+Gombong+Kebumen"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Buka di Google Maps
+              </a>
+            </article>
+
+            <article class="location-card location-tips">
+              <p class="card-label">Patokan</p>
+              <h3>Biar gampang ketemu</h3>
+              <ul>
+                <li>Dekat area Pasar Wonokriyo dan Pasar Pagi Gombong.</li>
+                <li>Searah dengan Bank BRI Teras Pasar Wonokriyo dan Pretty Photo Studio.</li>
+                <li>Masuk area Kedungampel, lalu cek titik sekitar gang tengah seperti di map.</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section arcade-section" id="miniGame">
+        <div class="section-heading">
+          <p class="section-tag">Mini Game</p>
+          <h2>Warung Defense</h2>
+        </div>
+        <div class="minigame-layout">
+          <div class="minigame-arena" id="miniGameArena" data-animate-item data-reveal="left" style="--stagger-delay: 80ms;">
+            <div class="minigame-grid" aria-hidden="true"></div>
+            <canvas class="minigame-canvas" id="miniGameCanvas" width="720" height="400" aria-label="Arena mini game strategy defense"></canvas>
+            <div class="minigame-overlay">
+              <p class="card-label">Arena Defense</p>
+              <strong id="miniGameOverlayText">Pilih tank atau tembok, klik grid buat bangun, lalu start wave.</strong>
+            </div>
+          </div>
+
+          <aside class="minigame-panel" data-animate-item data-reveal="right" style="--stagger-delay: 180ms;">
+            <p class="card-label">Mode Strategy</p>
+            <h3>Bangun benteng, tahan rush.</h3>
+            <div class="minigame-build-tools" aria-label="Pilih bangunan defense">
+              <button class="build-tool is-active" type="button" data-build-tool="turret">
+                <span>Tank</span>
+                <strong>40 scrap</strong>
+              </button>
+              <button class="build-tool" type="button" data-build-tool="wall">
+                <span>Tembok</span>
+                <strong>15 scrap</strong>
+              </button>
+              <button class="build-tool" type="button" data-build-tool="erase">
+                <span>Hapus</span>
+                <strong>refund kecil</strong>
+              </button>
+            </div>
+            <div class="minigame-stats">
+              <article>
+                <span>Scrap</span>
+                <strong id="miniGameScore">0</strong>
+              </article>
+              <article>
+                <span>Base HP</span>
+                <strong id="miniGameHp">100</strong>
+              </article>
+              <article>
+                <span>Wave</span>
+                <strong id="miniGameTimer">1</strong>
+              </article>
+            </div>
+            <div class="minigame-actions">
+              <button class="primary-btn" id="miniGameStartBtn" type="button">Start Wave</button>
+              <button class="secondary-btn" id="miniGameResetBtn" type="button">Reset</button>
+            </div>
+            <p class="form-note" id="miniGameStatus">
+              Kontrol: pilih alat bangun, klik kotak arena, klik kanan buat hapus cepat, atau klik bangunan dengan tool lain buat ganti.
+            </p>
+          </aside>
+        </div>
+      </section>
+
+      <section class="section order-section" id="order">
+        <div class="section-heading">
+          <p class="section-tag">Order Cepat</p>
+          <h2>Pesan tanpa ribet</h2>
+        </div>
+        <div class="checkout-layout">
+          <form class="order-form">
+          <label>
+            Nama party leader
+            <input id="customerName" type="text" placeholder="Masukkan nama kamu">
+          </label>
+          <label>
+            Pilih loadout
+            <select id="quickMenu">
+              <option>Nasi Ayam Critical</option>
+              <option>Mie Boost XP</option>
+              <option>Rice Bowl Patriot</option>
+              <option>Es Soda Headshot</option>
+            </select>
+          </label>
+          <label>
+            Catatan strategi
+            <textarea id="orderNote" rows="4" placeholder="Contoh: sambal dipisah, es batu sedikit"></textarea>
+          </label>
+          <div class="form-actions">
+            <button class="secondary-btn" id="quickAddBtn" type="button">Tambah ke Keranjang</button>
+            <button class="primary-btn" type="submit">Pesan via WhatsApp</button>
+          </div>
+          <p class="form-note" id="formMessage">Siap kirim order ke WhatsApp warung.</p>
+          </form>
+
+          <aside class="cart-panel">
+            <div class="cart-header">
+              <div>
+                <p class="section-tag">Keranjang Mabar</p>
+                <h3>Checkout Squad</h3>
+              </div>
+              <span class="cart-badge" id="cartCount">0 item</span>
+            </div>
+            <div class="cart-items" id="cartItems">
+              <p class="cart-empty">Keranjang masih kosong. Loot makanan dulu.</p>
+            </div>
+            <div class="cart-summary">
+              <div>
+                <span>Total</span>
+                <strong id="cartTotal">Rp0</strong>
+              </div>
+              <div class="delivery-buttons">
+                <a
+                  class="delivery-btn gojek"
+                  id="gojekLink"
+                  href="https://gofood.co.id/"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Pesan via Gojek
+                </a>
+                <a
+                  class="delivery-btn grab"
+                  id="grabLink"
+                  href="https://food.grab.com/id/"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Pesan via Grab
+                </a>
+              </div>
+              <p class="form-note">
+                Tombol akan buka GoFood atau GrabFood, lalu bawa catatan pesanan yang sudah disiapkan.
+              </p>
+            </div>
+          </aside>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="menu-store.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
