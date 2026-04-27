@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Panel MWP Gamers</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="page-shell">
+    <section class="section admin-auth-shell" id="adminAuthSection">
+      <div class="section-heading">
+        <p class="section-tag">Admin Access</p>
+        <h2>Login buat masuk control room MWP</h2>
+      </div>
+      <div class="admin-login-grid">
+        <div class="login-copy">
+          <p class="lead">
+            Halaman ini khusus admin. Dari sini kamu bisa tambah makanan, ubah harga,
+            edit deskripsi, dan hapus menu tanpa numpang di tampilan pembeli.
+          </p>
+          <div class="admin-login-hint">
+            <span>Demo login</span>
+            <strong>Username: admin</strong>
+            <strong>Password: mwp123</strong>
+          </div>
+        </div>
+        <form class="admin-login-form" id="adminLoginForm">
+          <label>
+            Username
+            <input id="adminUsername" type="text" placeholder="admin">
+          </label>
+          <label>
+            Password
+            <input id="adminPassword" type="password" placeholder="mwp123">
+          </label>
+          <button class="primary-btn" type="submit">Masuk Admin Panel</button>
+          <p class="form-note" id="adminLoginMessage">Login admin aktif di halaman ini saja.</p>
+        </form>
+      </div>
+    </section>
+
+    <div class="admin-shell is-hidden" id="adminWorkspace">
+      <header class="hero admin-hero">
+        <nav class="topbar">
+          <div class="brand">
+            <img class="brand-logo" src="assets/logo-mwp.svg" alt="Logo MWP Gamers">
+            <div>
+              <p class="eyebrow">Control Center</p>
+              <h1>Admin Panel MWP</h1>
+            </div>
+          </div>
+          <div class="topbar-actions">
+            <a class="cta-link" href="index.html">Balik ke Web</a>
+            <button class="secondary-btn" id="logoutBtn" type="button">Logout</button>
+          </div>
+        </nav>
+
+        <div class="hero-grid admin-grid">
+          <section class="hero-copy">
+            <p class="tag">Menu Control</p>
+            <h2>Atur harga, stok tampilan, dan roster makanan.</h2>
+            <p class="lead">
+              Semua perubahan disimpan di browser dan langsung kebaca di halaman utama MWP.
+              Cocok buat demo, prototipe, atau warung digital lokal.
+            </p>
+          </section>
+          <aside class="hero-card">
+            <img class="hero-logo" src="assets/logo-mwp.svg" alt="Logo MWP Gamers besar">
+            <p class="card-label">Sync Status</p>
+            <h3 id="syncStatus">Realtime lokal aktif</h3>
+            <p class="form-note">Buka `index.html` di tab lain, ubah harga di sini, lalu tampilannya ikut update.</p>
+          </aside>
+        </div>
+      </header>
+
+      <main class="admin-main">
+        <section class="section admin-panel-grid">
+          <div class="admin-side-stack">
+            <form class="admin-editor-card" id="menuForm">
+              <div class="section-heading">
+                <p class="section-tag">Tambah Menu</p>
+                <h2>Bikin item baru</h2>
+              </div>
+              <label>
+                Nama makanan
+                <input id="foodName" type="text" placeholder="Contoh: Burger GG">
+              </label>
+              <label>
+                Deskripsi
+                <textarea id="foodDescription" rows="4" placeholder="Tulis deskripsi singkat menu"></textarea>
+              </label>
+              <div class="admin-form-row">
+                <label>
+                  Harga
+                  <input id="foodPrice" type="number" min="1000" step="500" placeholder="18000">
+                </label>
+                <label>
+                  Role
+                  <select id="foodRole">
+                    <option value="core">Core</option>
+                    <option value="support">Support</option>
+                    <option value="tank">Tank</option>
+                    <option value="sniper">Sniper</option>
+                  </select>
+                </label>
+              </div>
+              <button class="primary-btn" type="submit">Tambah Makanan</button>
+              <p class="form-note" id="adminFormMessage">Masukkan data menu baru lalu submit.</p>
+            </form>
+
+            <section class="admin-editor-card ai-admin-card">
+              <div class="section-heading">
+                <p class="section-tag">AI Menu Lab</p>
+                <h2>Generate draft pakai AI</h2>
+              </div>
+              <label>
+                Brief menu
+                <textarea
+                  id="aiMenuBrief"
+                  rows="4"
+                  placeholder="Contoh: mau bikin rice bowl pedas manis buat anak nongkrong, harga aman di 20 ribuan"
+                ></textarea>
+              </label>
+              <div class="admin-ai-actions">
+                <button class="secondary-btn" id="generateMenuDraftBtn" type="button">Generate Draft</button>
+                <button class="primary-btn" id="applyMenuDraftBtn" type="button" disabled>Pakai Draft</button>
+              </div>
+              <div class="ai-draft-preview" id="aiDraftPreview">
+                <p class="form-note">Draft AI nanti muncul di sini, lalu bisa langsung dipindah ke form tambah menu.</p>
+              </div>
+              <p class="form-note" id="adminAiMessage">AI helper aktif kalau backend dan OPENAI_API_KEY sudah diset.</p>
+            </section>
+          </div>
+
+          <section class="admin-list-card">
+            <div class="section-heading">
+              <p class="section-tag">Roster Menu</p>
+              <h2>Edit atau hapus makanan</h2>
+            </div>
+            <div class="admin-menu-list" id="adminMenuList"></div>
+          </section>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <script src="menu-store.js"></script>
+  <script src="admin.js"></script>
+</body>
+</html>
